@@ -3,15 +3,22 @@ mkdir /opt/jdk-17
 
 cd /tmp
 
-wget https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+wget  https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.rpm
+
+
+yum -y install ./jdk-17_linux-x64_bin.rpm
 
 tar -xvf openjdk-17.0.2_linux-x64_bin.tar.gz
 
 mv jdk-17.0.2/ /opt/jdk-17/
 
-cat "export JAVA_HOME=/opt/jdk-17" >> ~/.bashrc
-cat "export PATH=$JAVA_HOME/bin:$PATH" >> ~/.bashrc
+# JAVA_HOME 환경 변수 설정 및 .bashrc에 추가
+echo 'export JAVA_HOME=/usr/lib/jvm/jre-openjdk/' >> ~/.bashrc
 
+# PATH에 JAVA_HOME/bin을 추가하고 .bashrc에 추가
+echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.bashrc
+
+# .bashrc 새로고침
 source ~/.bashrc
 
 java -version
